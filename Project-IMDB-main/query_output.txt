@@ -1,0 +1,44 @@
+﻿curl.exe : * Host localhost:5001 was resolved.
+At line:1 char:84
++ ... IMDB-main'; curl.exe -v --max-time 10 "http://localhost:5001/api/sear ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (* Host localhost:5001 was resolve 
+   d.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+* IPv6: ::1
+* IPv4: 127.0.0.1
+  % Total    % Received % Xferd  Average Speed  Time    Time    Time   Current
+                                 Dload  Upload  Total   Spent   Left   Speed
+
+  0      0   0      0   0      0      0      0                              0* 
+  Trying [::1]:5001...
+*   Trying 127.0.0.1:5001...
+* Established connection to localhost (127.0.0.1 port 5001) from 127.0.0.1 
+port 59173 
+* using HTTP/1.x
+> GET /api/search?q=Inception HTTP/1.1
+
+> Host: localhost:5001
+
+> User-Agent: curl/8.19.0
+
+> Accept: */*
+
+> 
+
+* Request completely sent off
+
+  0      0   0      0   0      0      0      0           00:01              0
+  0      0   0      0   0      0      0      0           00:02              0
+  0      0   0      0   0      0      0      0           00:03              0
+  0      0   0      0   0      0      0      0           00:04              0
+  0      0   0      0   0      0      0      0           00:05              0
+  0      0   0      0   0      0      0      0           00:06              0
+  0      0   0      0   0      0      0      0           00:07              0
+  0      0   0      0   0      0      0      0           00:08              0
+  0      0   0      0   0      0      0      0           00:09              0* 
+Operation timed out after 10004 milliseconds with 0 bytes received
+
+* closing connection #0
+curl: (28) Operation timed out after 10004 milliseconds with 0 bytes received

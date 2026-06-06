@@ -1,0 +1,14 @@
+{
+  "name": "imdb-project",
+  "version": "2.0.0",
+  "description": "AI-powered movie recommendation platform built on TMDB and Express",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "serverless-http": "^4.0.0"
+  }
+}

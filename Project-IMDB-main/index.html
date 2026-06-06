@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>MOVIES - TMDB</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo_ul">
+                <h2 style="color: #fff; font-size: 24px; font-weight: bold;">🎬 Movies</h2>
+                <ul>
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    <li>
+                        <a href="#" id="series">Series</a>
+                    </li>
+                    <li>
+                        <a href="#" id="movies">Movies</a>
+                    </li>
+                    <li>
+                        <a href="#">Kids</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="search_user">
+                <input type="text" placeholder="Search..." id="search_input">
+                <button id="voice_mic" class="voice_mic" title="Voice search" aria-label="Voice search">
+                    <i class="bi bi-mic-fill" style="color: #fff; font-size: 18px;"></i>
+                </button>
+                <i class="bi bi-person-circle" style="color: #fff; font-size: 24px;"></i>
+                <div class="search">
+                </div>
+            </div>
+        </nav>
+        <div class="content">
+            <h1 id="title">Loading...</h1>
+            <p>Fetching latest movies from TMDB...</p>
+            <div class="details">
+                <h6>Powered by TMDB</h6>
+                <h5 id="gen">Genre</h5>
+                <h4 id="date">Year</h4>
+                <h3 id="rate"><span>TMDB </span><i class="bi bi-star-fill"></i> 0.0</h3>
+            </div>
+            <div class="btns">
+                <a href="#" id="play">Watch <i class="bi bi-play-fill"></i></a>
+                <a href="#" id="download_main"><i class="bi bi-cloud-arrow-down-fill"></i></i></a>
+            </div>
+        </div>
+        <!-- Mood recommendations and personalized section (AI features added) -->
+        <div id="mood_section" class="mood_section">
+            <h4>How are you feeling today?</h4>
+            <div class="mood_buttons">
+                <button class="mood_btn" data-prompt="Happy family comedies and heartwarming films">😊 Happy</button>
+                <button class="mood_btn" data-prompt="High-energy action films with strong thrills">🔥 Action</button>
+                <button class="mood_btn" data-prompt="Romantic movies and romantic comedies">❤️ Romantic</button>
+                <button class="mood_btn" data-prompt="Emotional dramas and tearjerkers">😢 Emotional</button>
+                <button class="mood_btn" data-prompt="Mind-bending sci-fi and twisty films">🤯 Mind-Blowing</button>
+                <button class="mood_btn" data-prompt="Classic and modern horror movies">👻 Horror</button>
+            </div>
+            <div id="mood_results" class="cards mood_results"></div>
+        </div>
+
+        <section id="recommended_section">
+            <h4>Recommended For You</h4>
+            <div id="recommended_cards" class="cards"></div>
+        </section>
+
+        <section>
+            <h4>Popular</h4>
+            <i class="bi bi-chevron-left"></i>
+            <i class="bi bi-chevron-right"></i>
+            <div class="cards">
+            </div>
+        </section>
+    </header>
+    <button id="ai_toggle" class="ai_toggle">
+        <i class="bi bi-stars"></i> AI Assistant
+    </button>
+    <div id="ai_panel" class="ai_panel">
+        <div class="ai_panel_header">
+            <div>
+                <h3>AI Movie Assistant</h3>
+                <p>Ask in natural language</p>
+            </div>
+            <button id="ai_close" class="ai_close">
+                <i class="bi bi-x-lg"></i>
+            </button>
+        </div>
+        <div id="ai_messages" class="ai_messages">
+            <div class="ai_message ai_message_bot">
+                <strong>Cine AI</strong>
+                <p>Try: "Suggest Telugu thriller movies" or "I want a mind-bending sci-fi movie like Interstellar"</p>
+            </div>
+        </div>
+        <form id="ai_form" class="ai_form">
+            <textarea id="ai_prompt" placeholder="Ask for movie recommendations..." rows="3"></textarea>
+            <button type="submit">Ask AI</button>
+        </form>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
