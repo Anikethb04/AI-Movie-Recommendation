@@ -1,10 +1,5 @@
 [build]
-  command = "npm install"
-  functions = "netlify/functions"
   publish = "."
-
-[build.environment]
-  NODE_VERSION = "20"
 
 [[redirects]]
   from = "/api/*"
@@ -15,9 +10,3 @@
   from = "/*"
   to = "/index.html"
   status = 200
-
-[dev]
-  command = "node server.js"
-  port = 5000
-  targetPort = 5000
-  framework = "#custom"
