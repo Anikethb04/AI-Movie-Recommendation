@@ -1,3 +1,11 @@
+const API_BASE = window.API_BASE || '';
+
+function apiFetch(path, options) {
+    const base = API_BASE.replace(/\/$/, '');
+    const url = base ? `${base}${path}` : path;
+    return fetch(url, options);
+}
+
 let left_btn = document.getElementsByClassName('bi-chevron-left')[0];
 let right_btn = document.getElementsByClassName('bi-chevron-right')[0];
 let cards = document.getElementsByClassName('cards')[0];
@@ -122,7 +130,7 @@ async function fetchRecommendedForYou() {
     container.innerHTML = '<p style="color: #fff; padding: 12px;">Loading recommendations...</p>';
 
     try {
-        const response = await fetch('/api/personalized', {
+        const response = await apiFetch('/api/personalized', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ preferences: prefs })
@@ -158,7 +166,7 @@ function setupMoodButtons() {
             resultsContainer.innerHTML = '';
 
             try {
-                const resp = await fetch('/api/ai-recommend', {
+                const resp = await apiFetch('/api/ai-recommend', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ prompt, limit: 12 })
@@ -207,7 +215,7 @@ function setupVoiceMic() {
         mic.classList.remove('listening');
         // send to AI recommendation endpoint and render into search area
         appendAiMessage('user', text);
-        fetch('/api/ai-recommend', {
+        apiFetch('/api/ai-recommend', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ prompt: text, limit: 10 })
@@ -303,7 +311,7 @@ aiForm.addEventListener('submit', async (event) => {
     aiPrompt.value = '';
 
     try {
-        const response = await fetch('/api/ai-recommend', {
+        const response = await apiFetch('/api/ai-recommend', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -347,7 +355,7 @@ async function fetchTrendingRegionalMovies() {
     }
     
     try {
-        const response = await fetch('/api/trending-regional');
+        const response = await apiFetch('/api/trending-regional');
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -407,7 +415,7 @@ async function fetchMoviesFromServer() {
     }
     
     try {
-        const response = await fetch('/api/movies');
+        const response = await apiFetch('/api/movies');
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -520,7 +528,7 @@ fetchMoviesFromServer().then((data) => {
         recordUserAction('search', { query });
         
         try {
-            const response = await fetch(`/api/search?q=${encodeURIComponent(query)}`);
+            const response = await apiFetch(`/api/search?q=${encodeURIComponent(query)}`);
             const results = await response.json();
             searchResults = results;
             renderSearchResults(results);
